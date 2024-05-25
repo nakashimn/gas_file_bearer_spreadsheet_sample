@@ -1,7 +1,7 @@
 /**
 * トリガー登録関数
 */
-function main() {
+function set_triggers() {
     Logger.log("==== start. ====");
     const scriptProperties = PropertiesService.getScriptProperties();
     const spreadsheet_id = scriptProperties.getProperty("GOOGLE_SPREADSHEET_ID");
