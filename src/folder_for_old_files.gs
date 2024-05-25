@@ -23,10 +23,9 @@ class FolderForOldFiles {
 
     /**
      * ファイル移動処理
-     * @param file_id oldフォルダに移動させるファイルのid
+     * @param file oldフォルダに移動させるファイル(Blob形式)
      */
-    collect(file_id) {
-        const file = DriveApp.getFileById(file_id);
+    collect(file) {
         this.add_processed_date_(file);
         file.moveTo(this.folder);
         Logger.log(`${this.constructor.name}: move ${file.getName()} to \"old\" folder.`);
@@ -34,7 +33,7 @@ class FolderForOldFiles {
 
     /**
     * ファイルの名称に処理日を付与する処理
-    * @param file_id 対象ファイル
+    * @param file 対象ファイル(Blob形式)
     */
     add_processed_date_(file) {
         return file.setName(`${this.prefix_today}_${file.getName()}`);

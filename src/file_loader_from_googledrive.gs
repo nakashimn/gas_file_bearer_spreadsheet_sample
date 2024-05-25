@@ -27,9 +27,7 @@ class FileLoaderFromGoogleDrive {
             const file = all_files.next();
             if (file.getName().match(filename)) {
                 Logger.log(`${this.constructor.name}: find "${file.getName()}".`);
-
-                const content = file.getBlob();
-                files.push({id: file.getId(), name: file.getName(), content: content});
+                files.push(file);
              }
         }
 

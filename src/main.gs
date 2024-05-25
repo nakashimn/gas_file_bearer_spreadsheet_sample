@@ -51,8 +51,8 @@ function send_file(e) {
     const folder_for_old_files = new FolderForOldFiles(google_drive_folder_id);
     files.forEach(file => {
         try {
-            bearer.send(file.content, encodeURI(decodeURI(`${dest_dirname}/${file.name}`)), compress);
-            folder_for_old_files.collect(file.id); // 送付後のファイルをoldディレクトリへ移動
+            bearer.send(file.getBlob(), encodeURI(decodeURI(`${dest_dirname}/${file.getName()}`)), compress);
+            folder_for_old_files.collect(file); // 送付後のファイルをoldディレクトリへ移動
         } catch(e) {
             throw(e);
         }

@@ -25,24 +25,25 @@ class TextBearerToAwsS3 {
     * @param compress 圧縮の有無
     */
     send(src_blob, dst_key, compress) {
-        if (compress == null) {
-            compress = false;
-        }
-
         var options = {
             "Content-Type": src_blob.getContentType(),
             // "X-Amz-Acl": "bucket-owner-full-control"
         };
+
+        // 圧縮処理
         if (compress) {
             options["Content-Encoding"] = "gzip";
             dst_key = dst_key + ".gz";
+            src_blob = Utilities.gzip(src_blob);
         }
 
+        // AWSへのPUTリクエスト処理
         const res = AWS.request(
             "s3", this.region, "PutObject", {}, "PUT", src_blob, options,
             `/${dst_key}`, { Bucket: this.bucket }
         );
 
+        // エラーチェック
         this.check_error_(res);
         Logger.log(`${this.constructor.name}: send to "${this.bucket}/${dst_key}".`);
     }
