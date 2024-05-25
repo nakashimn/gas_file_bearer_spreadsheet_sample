@@ -1,0 +1,12 @@
+{
+	"name": "gas_spreadsheet_sample",
+	"dockerComposeFile": "../compose.yaml",
+	"service": "gas_spreadsheet_sample",
+	"workspaceFolder": "/workspace",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+			]
+		}
+	}
+}

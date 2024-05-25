@@ -1,0 +1,17 @@
+services:
+  gas_spreadsheet_sample:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: gas_spreadsheet_sample
+    hostname: gas_spreadsheet_sample
+    shm_size: '4gb'
+    volumes:
+      - ./:/workspace:cached
+    environment:
+      GIT_AUTHOR_NAME: ${GIT_USERNAME}
+      GIT_COMMITTER_NAME: ${GIT_USERNAME}
+      GIT_AUTHOR_EMAIL: ${GIT_EMAIL_ADDRESS}
+      GIT_COMMITTER_EMAIL: ${GIT_EMAIL_ADDRESS}
+      TZ: Asia/Tokyo
+    tty: true
