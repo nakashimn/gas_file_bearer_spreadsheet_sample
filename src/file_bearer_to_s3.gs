@@ -1,7 +1,7 @@
 /**
-* textをAWS S3バケットに送付するクラス
+* ファイルをAWS S3バケットに送付するクラス
 */
-class TextBearerToAwsS3 {
+class FileBearerToAwsS3 {
     /**
     * コンストラクタ
     * @param access_key AWSのアクセスキー
@@ -19,7 +19,7 @@ class TextBearerToAwsS3 {
     }
 
     /**
-    * text送付処理
+    * ファイル送付処理
     * @param src_blob 送付対象のファイル(blob形式)
     * @param dst_key 送付先のkey名(ディレクトリ/ファイル名)
     * @param compress 圧縮の有無

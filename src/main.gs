@@ -47,7 +47,7 @@ function send_file(e) {
 
     // send files to AWS S3 bucket
     Logger.log("==== send files to AWS S3 bucket ====");
-    const bearer = new TextBearerToAwsS3(aws_access_key, aws_secret_access_key, aws_region, aws_s3_bucket);
+    const bearer = new FileBearerToAwsS3(aws_access_key, aws_secret_access_key, aws_region, aws_s3_bucket);
     const folder_for_old_files = new FolderForOldFiles(google_drive_folder_id);
     files.forEach(file => {
         try {
