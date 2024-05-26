@@ -9,7 +9,7 @@ class FolderForOldFiles {
     constructor(root_folder_id) {
         Logger.log(`${this.constructor.name}: init.`);
         const root_folder = DriveApp.getFolderById(root_folder_id);
-        const iter_folders = root_folder.getFolderByName("old");
+        const iter_folders = root_folder.getFoldersByName("old");
         // あれば利用, なければ作成
         if (iter_folders.hasNext()) {
             this.folder = iter_folder.next();
